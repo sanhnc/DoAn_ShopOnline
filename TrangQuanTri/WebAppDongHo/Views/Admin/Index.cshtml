@@ -1,0 +1,71 @@
+﻿@using WebAppDongHo.Models;
+@model List<SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+<link href="~/Content/css/all.css" rel="stylesheet" />
+<script src="~/Content/js/all.js"></script>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+<h4><b><span><i class="fab fa-algolia"></i></span> Sản phẩm</b></h4>
+<hr /><br /><br />
+<a href="@Url.Action("themsanpham","admin")" class="btn btn-danger">Thêm mới</a>
+<table class="table table-bordered"  style="50%">
+    <tr class="thead-light">
+        <th style="width:80px;">Mã SP</th>
+        <th>Mã loại SP</th>
+        <th>Tên SP</th>
+        <th>Đơn vị tính </th>
+        <th>Số lượng</th>
+        <th>Giá bán</th>
+        <th>Giá vốn</th>
+        <th>Giá nhập cuối</th>
+        <th>Mức tồn</th>
+        <th>Trạng thái</th>
+        <th>Hình ảnh</th>
+        <th>Sửa</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.MaSP</td>
+        <td>@item.MaLoaiSP</td>
+        <td>@item.TenSP</td>
+        <td>@item.DonViTinh</td>
+        <td>@item.SoLuong</td>
+        <td>@string.Format("{0:0,0}", item.GiaBan) đ</td>
+        <td>@string.Format("{0:0,0}", item.GiaVon) đ</td>
+        <td>@string.Format("{0:0,0}", item.GiaNhapCuoi) đ</td>
+        <td>@item.MucTon</td>
+        <td>@item.TrangThai</td>
+        <td>
+            <img src="@item.HinhAnh" style="width: 50px; height: 50px" />
+        </td>
+        
+        <td>
+            <a href="@Url.Action("SuaSanPham","Admin",new { msp = item.MaSP })"><i class="fas fa-edit fa-2x"></i></a>
+        </td>
+       
+    </tr>
+    }
+</table>
+
+<script type="text/javascript">
+    function Delete() {
+        return confirm('Xóa Sản Phẩm này?');
+    }
+</script>

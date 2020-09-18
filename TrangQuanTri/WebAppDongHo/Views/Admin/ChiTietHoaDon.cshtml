@@ -1,0 +1,28 @@
+﻿@using WebAppDongHo.Models;
+@{
+    ViewBag.Title = "ChiTietHoaDon";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+<h4><b><i class="fas fa-book"></i> Chi tiết hóa đơn</b></h4>
+<table class="table table-bordered">
+    <tr class="thead-light">
+        <th>Mã hóa đơn</th>
+        <th>Mã sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành Tiền</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MaHD</td>
+            <td>@item.MaSP</td>
+            <td>@item.SoLuong</td>
+            <td>@item.DonGia</td>
+            <td>@(item.DonGia * item.SoLuong)</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,40 @@
+﻿@using WebAppDongHo.Models;
+@model TaiKhoan
+@{
+    ViewBag.Title = "ThongTinDatHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 style="text-align: center" class="mb-4">THÔNG TIN ĐẶT HÀNG</h2>
+    <form action="@Url.Action("DatHang","GioHang")" method="post">
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Họ tên khách hàng:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="hoten" value="@Model.HoTen" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Địa chỉ:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="diachi" value="@Model.DiaChi" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Điện thoại:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="sodt" value="@Model.SoDienThoai" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Ngày giao hàng</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="date" name="ngaygiao" value="@DateTime.Now" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="offset-sm-5 mt-3"><button type="submit" class="btn btn-dark"><i class="far fa-check-circle"></i> Đồng ý đặt hàng</button></div>
+        </div>
+    </form>
+</div>
+

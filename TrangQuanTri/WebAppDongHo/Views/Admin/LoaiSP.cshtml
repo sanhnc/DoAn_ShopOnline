@@ -1,0 +1,38 @@
+﻿@using WebAppDongHo.Models;
+@model List<Loai>
+@{
+    ViewBag.Title = "LoaiSP";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+    <h4><b><i class="fab fa-airbnb"></i> Loại SP</b></h4>
+<hr /><br /><br />
+    <a href="#" class="btn btn-danger">Thêm mới</a>
+<table class="table table-bordered">
+    <tr class="thead-light">
+        <th>Mã</th>
+        <th>Tên Loại</th>
+        <th>Thương Hiệu</th>
+        <th>Mô Tả</th>
+        <th>Sửa</th>
+        <th>Xóa</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MaLoai</td>
+            <td>@item.TenLoai</td>
+            <td>@item.ThuongHieu</td>
+            <td>@item.MoTa</td>
+            <td>
+                <a href="#"><i class="fas fa-edit fa-2x"></i></a>
+            </td>
+            <td>
+                <a class="del" href="#"><i class="fas fa-trash fa-2x"></i></a>
+            </td>
+        </tr>
+    }
+</table>
+

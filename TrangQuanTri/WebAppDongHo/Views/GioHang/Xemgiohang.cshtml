@@ -1,0 +1,44 @@
+﻿@using WebAppDongHo.Models;
+@model List<GioHang>
+@{
+    ViewBag.Title = "Xemgiohang";
+}
+
+<div class="container mt-5">
+    <h2>GIỎ HÀNG</h2><hr />
+    <table class="table">
+        <tr class="thead-light">
+            <th class="pl-5">Sản phẩm</th>
+            <th class="pl-5">Giá</th>
+            <th class="pl-4">Số lượng</th>
+            <th class="pl-5">Thành tiền</th>
+            <th class="pl-4">Xóa khỏi giỏ</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td><img src="~/Content/SanPham/@item.Hinh" width="100px" /><b>@item.TenSP</b><br />@Html.Action("TimTenLoai", "Home", new { maloai = item.Maloai }) - @item.Size MM</td>
+            <td class="p-5">@string.Format("{0:0,0}", item.Gia)</td>
+            <td class="p-5">@item.Soluong</td>
+            <td class="p-5">@string.Format("{0:0,0}", item.Gia * item.Soluong) đ</td>
+            <td class="p-5"><a onclick="return confirmation()" href="@Url.Action("Xoa1SPKhoiGio", "GioHang", new { msp = item.MaSP })"><i class="fas fa-trash fa-2x"></i></a></td>
+        </tr>
+        }
+        <tr style="text-align:right;">
+            <td colspan="5"> <h5 style="color:brown;">Tổng số lượng: @ViewBag.tongsoluong - Tổng cộng: @string.Format("{0:0,0}", ViewBag.tongtien) đ</h5></td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:center; color:white;"><a class="btn btn-dark" href="@Url.Action("ThongTinDatHang","GioHang")"><i class="fas fa-shopping-bag"></i> Đặt Hàng</a></td>
+            <td colspan="2" style="text-align:center; color:white;"><a class="btn btn-dark" href="@Url.Action("XoaAllGioHang","GioHang")"onclick="return DeleteAll()"><i class="fas fa-trash-restore-alt"></i> Xóa Giỏ Hàng</a></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    function confirmation() {
+        return confirm('Xóa sản phẩm này ra khỏi giỏ?');
+    }
+    function DeleteAll() {
+        return confirm('Xóa tất cả sản phẩm trong giỏ?');
+    }
+</script>

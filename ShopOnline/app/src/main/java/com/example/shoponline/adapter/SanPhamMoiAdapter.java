@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Holder> {
     private Activity context;
-    private List<Sanpham> sanPhamList;
+    public static List<Sanpham> sanPhamList;
 
     public SanPhamMoiAdapter(Activity context, List<Sanpham> sanPhamList) {
         this.context = context;
@@ -42,19 +42,22 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Ho
     public void onBindViewHolder(Holder holder, int position) {
         Sanpham sanPham = sanPhamList.get(position);
 
-        Picasso.with(context).load(sanPham.getHinhanhsp())
+        Picasso.with(context).load(sanPham.getHinhAnh())
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.no_image)
                 .into(holder.ivSanPham);
-        holder.tvTenSp.setText(sanPham.getTensp());
+        holder.tvTenSp.setText(sanPham.getTenSp());
         //định dang tiền
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.tvGiaSp.setText("Giá: "+decimalFormat.format(Integer.parseInt(sanPham.getGiasp()))+" Đ");
+        holder.tvGiaSp.setText("Giá: "+decimalFormat.format(sanPham.getGiaBan())+" Đ");
     }
 
     @Override
     public int getItemCount() {
-        return sanPhamList.size();
+        if(sanPhamList != null) {
+            return sanPhamList.size();
+        }
+        return 0;
     }
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {

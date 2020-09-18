@@ -10,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +30,7 @@ import com.example.shoponline.data.remote.ApiService;
 import com.example.shoponline.data.remote.RetrofitClient;
 import com.example.shoponline.util.Constan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,7 +41,7 @@ public class TrangChuFragment extends Fragment {
     private ViewFlipper viewFlipper;
     private RecyclerView rvSpMoi;
 
-    private List<Sanpham> spMoinhat;
+    private ArrayList<Sanpham> spMoinhat;
     private SanPhamMoiAdapter sanPhamMoiAdapter;
 
     private ApiService apiService;
@@ -47,24 +49,24 @@ public class TrangChuFragment extends Fragment {
     public TrangChuFragment() {
         // Required empty public constructor
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_trang_chu, container, false);
         initView(view);
         //chạy ảnh quảng cáo
-
-
         initData();
         return view;
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.option_menu, menu);
@@ -76,6 +78,7 @@ public class TrangChuFragment extends Fragment {
 
         rvSpMoi = view.findViewById(R.id.rv_spmoi);
     }
+
     private void initData() {
         //webservice
         apiService = RetrofitClient.getClient(Constan.API_URL).create(ApiService.class);
@@ -92,21 +95,42 @@ public class TrangChuFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-    private void loadSanphammoinhat(){
-        apiService.getSpMoinhat().enqueue(new Callback<SanPhamResponse>() {
-            @Override
-            public void onResponse(Call<SanPhamResponse> call, Response<SanPhamResponse> response) {
-                SanPhamResponse sanPhamResponse = response.body();
-                spMoinhat = sanPhamResponse.getSanpham();
 
-                sanPhamMoiAdapter = new SanPhamMoiAdapter(getActivity(),spMoinhat);
-                rvSpMoi.setLayoutManager(new GridLayoutManager(getActivity(),2));
+    private void loadSanphammoinhat() {
+        Call<List<Sanpham>> call = apiService.getSpMoinhat();
+        call.enqueue(new Callback<List<Sanpham>>() {
+            @Override
+            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
+                spMoinhat = (ArrayList<Sanpham>) response.body();
+//                Log.i("Tag", String.valueOf(response.isSuccessful()));
+////                for (Sanpham s : response.body())
+////                {
+////                    Log.i("Tag",s.toString());
+////                }
+                sanPhamMoiAdapter = new SanPhamMoiAdapter(getActivity(), spMoinhat);
+                rvSpMoi.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                 rvSpMoi.setAdapter(sanPhamMoiAdapter);
             }
+
             @Override
-            public void onFailure(Call<SanPhamResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), "Lỗi!\n Vui lòng kiểm tra lại kết nối.", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
+
             }
         });
+//        apiService..enqueue(new Callback<List<SanPhamResponse>>() {
+//            @Override
+//            public void onResponse(Call<SanPhamResponse> call, Response<SanPhamResponse> response) {
+//                SanPhamResponse sanPhamResponse = response.body();
+//                spMoinhat = sanPhamResponse.getSanpham();
+//
+//                sanPhamMoiAdapter = new SanPhamMoiAdapter(getActivity(),spMoinhat);
+//                rvSpMoi.setLayoutManager(new GridLayoutManager(getActivity(),2));
+//                rvSpMoi.setAdapter(sanPhamMoiAdapter);
+//            }
+//            @Override
+//            public void onFailure(Call<SanPhamResponse> call, Throwable t) {
+//                Toast.makeText(getActivity(), "Lỗi!\n Vui lòng kiểm tra lại kết nối.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }

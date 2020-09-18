@@ -1,0 +1,13 @@
+﻿@using WebAppDongHo.Models;
+@model List<Nhom>
+
+@foreach (var item in Model)
+{
+    <li class="nav-item dropdown">
+        <a class="nav-link nav_ul_li_a" href="#">@item.TenNhom</a>
+        <ul class="dropdown-menu">
+            @Html.Action("HienThiLoaiTheoNhom", new { mn = item.MaNhom })
+        </ul>
+    </li>
+}
+

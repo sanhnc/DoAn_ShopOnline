@@ -1,0 +1,92 @@
+﻿@using WebAppDongHo.Models;
+@{
+    ViewBag.Title = "ThemSanPham";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+<div class="container mt-5">
+    <h2 style="text-align: center">THÊM SẢN PHẨM</h2>
+    <form action="@Url.Action("XLThemSanPham")" method="post" enctype="multipart/form-data">
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Mã sản phẩm:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="MaSP" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Tên sản phẩm:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="TenSP" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Đơn vị tính:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="DonViTinh" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Số lượng:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="SoLuong" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Giá bán:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="number" name="GiaBan" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Giá vốn:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="number" name="GiaVon" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Giá nhập cuối:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="number" name="GiaNhapCuoi" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Mức tồn:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="number" name="MucTon" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Trạng thái:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="number" name="TrangThai" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Hình ảnh:</h4></label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" name="HinhAnh" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Mô tả:</h4></label>
+            <div class="col-sm-9">
+                <textarea name="Mota"></textarea>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-3"><h4>Thuộc loại:</h4></label>
+            <select name="MaLoaiSP">
+                @foreach (LoaiSP item in ViewBag.LoaiSPs)
+                {
+                    <option value="@item.MaLoaiSP">@item.TenLoaiSP</option>
+                }
+            </select>
+        </div>
+        <div class="row form-group">
+            <div class="offset-sm-5"><button type="submit" class="btn btn-dark"><i class="fas fa-user-plus"></i> Lưu</button></div>
+        </div>
+    </form>
+</div>
+

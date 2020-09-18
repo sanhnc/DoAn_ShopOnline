@@ -1,0 +1,21 @@
+﻿@using WebAppDongHo.Models;
+@model List<SanPham>
+@{
+    ViewBag.Title = "HienThiSanPhamTheoLoai";
+}
+
+<div class="container" style="margin:100px auto">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-md-3" style="margin:20px auto">
+            <a href="@Url.Action("ChiTietSP",new {msp = item.MaSP })"><img src="~/Content/SanPham/@item.HinhAnh" width="100%" alt="Alternate Text" /></a>
+            <p style="text-align:center">@ViewBag.TenLoai - @item.Size MM</p>
+            <b><p style="text-align:center; margin-top:4px;">@item.TenSP</p></b>
+            <p style="text-align:center">@item.GiaBan đ</p>
+        </div>
+        }
+    </div>
+</div>
+
+

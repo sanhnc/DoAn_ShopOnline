@@ -22,8 +22,8 @@ public class SanPhamResponse {
     public String message;
 
     public List<Sanpham> getSanpham() {
-        return sanpham;
-    }
+       return sanpham;
+  }
 
     public Integer getSuccess() {
         return success;

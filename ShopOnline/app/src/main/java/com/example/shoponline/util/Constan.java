@@ -47,8 +47,8 @@ public class Constan {
 
     //public static String localhost = "192.168.100.10";
 //    public static String localhost = "192.168.0.38";
-    public static String localhost = "192.168.5.106";
-    public static final String API_URL = "http://" + localhost + ":8080/shopeesm/";
+    public static String localhost = "192.168.5.102";
+    public static final String API_URL = "http://" + localhost + ":5000/api/";
 
 //    //Chức năng trong tài khoản
 //    public static List<ItemTK> getListChucnang() {

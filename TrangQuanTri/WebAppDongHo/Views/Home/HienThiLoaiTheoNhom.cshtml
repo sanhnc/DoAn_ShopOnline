@@ -1,0 +1,8 @@
+﻿@using WebAppDongHo.Models;
+@model List<Loai>
+
+@foreach (var item in Model)
+{
+    <li class="dropdown-item"><a href="@Url.Action("HienThiSanPhamTheoLoai", new {ml = item.MaLoai })">@item.TenLoai</a></li>
+}
+

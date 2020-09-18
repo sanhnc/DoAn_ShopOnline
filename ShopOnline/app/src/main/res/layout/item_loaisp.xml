@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_item_main"
     android:orientation="vertical"
     android:gravity="center">
     <ImageView
@@ -14,10 +15,10 @@
 
     <TextView
         android:id="@+id/tv_ten_loaisp"
-        android:text="Điện thoại"
-        android:textSize="14sp"
-        android:layout_margin="5dp"
-        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Điện thoại"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp" />
 </LinearLayout>

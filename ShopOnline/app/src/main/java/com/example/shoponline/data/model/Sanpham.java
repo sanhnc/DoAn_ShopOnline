@@ -4,52 +4,166 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by muase on 4/12/2018.
  */
 
 public class Sanpham implements Serializable{
-    @SerializedName("id")
+    @SerializedName("maSp")
     @Expose
-    public String id;
-    @SerializedName("tensp")
+    private String maSp;
+    @SerializedName("maLoaiSp")
     @Expose
-    public String tensp;
-    @SerializedName("giasp")
+    private String maLoaiSp;
+    @SerializedName("tenSp")
     @Expose
-    public String giasp;
-    @SerializedName("hinhanhsp")
+    private String tenSp;
+    @SerializedName("donViTinh")
     @Expose
-    public String hinhanhsp;
-    @SerializedName("motasp")
+    private String donViTinh;
+    @SerializedName("soLuong")
     @Expose
-    public String motasp;
-    @SerializedName("id_loaisp")
+    private Integer soLuong;
+    @SerializedName("giaBan")
     @Expose
-    public String idLoaisp;
+    private Integer giaBan;
+    @SerializedName("giaVon")
+    @Expose
+    private Integer giaVon;
+    @SerializedName("giaNhapCuoi")
+    @Expose
+    private Integer giaNhapCuoi;
+    @SerializedName("mucTon")
+    @Expose
+    private Integer mucTon;
+    @SerializedName("trangThai")
+    @Expose
+    private Integer trangThai;
+    @SerializedName("hinhAnh")
+    @Expose
+    private String hinhAnh;
+    @SerializedName("moTa")
+    @Expose
+    private String moTa;
+    @SerializedName("maLoaiSpNavigation")
+    @Expose
+    private Object maLoaiSpNavigation;
+    @SerializedName("chiTietHoaDon")
+    @Expose
+    private List<Object> chiTietHoaDon = null;
 
-    public String getId() {
-        return id;
+    public String getMaSp() {
+        return maSp;
     }
 
-    public String getTensp() {
-        return tensp;
+    public void setMaSp(String maSp) {
+        this.maSp = maSp;
     }
 
-    public String getGiasp() {
-        return giasp;
+    public String getMaLoaiSp() {
+        return maLoaiSp;
     }
 
-    public String getHinhanhsp() {
-        return hinhanhsp;
+    public void setMaLoaiSp(String maLoaiSp) {
+        this.maLoaiSp = maLoaiSp;
     }
 
-    public String getMotasp() {
-        return motasp;
+    public String getTenSp() {
+        return tenSp;
     }
 
-    public String getIdLoaisp() {
-        return idLoaisp;
+    public void setTenSp(String tenSp) {
+        this.tenSp = tenSp;
     }
+
+    public String getDonViTinh() {
+        return donViTinh;
+    }
+
+    public void setDonViTinh(String donViTinh) {
+        this.donViTinh = donViTinh;
+    }
+
+    public Integer getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(Integer soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public Integer getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaBan(Integer giaBan) {
+        this.giaBan = giaBan;
+    }
+
+    public Integer getGiaVon() {
+        return giaVon;
+    }
+
+    public void setGiaVon(Integer giaVon) {
+        this.giaVon = giaVon;
+    }
+
+    public Integer getGiaNhapCuoi() {
+        return giaNhapCuoi;
+    }
+
+    public void setGiaNhapCuoi(Integer giaNhapCuoi) {
+        this.giaNhapCuoi = giaNhapCuoi;
+    }
+
+    public Integer getMucTon() {
+        return mucTon;
+    }
+
+    public void setMucTon(Integer mucTon) {
+        this.mucTon = mucTon;
+    }
+
+    public Integer getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Integer trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
+    }
+
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
+
+    public Object getMaLoaiSpNavigation() {
+        return maLoaiSpNavigation;
+    }
+
+    public void setMaLoaiSpNavigation(Object maLoaiSpNavigation) {
+        this.maLoaiSpNavigation = maLoaiSpNavigation;
+    }
+
+    public List<Object> getChiTietHoaDon() {
+        return chiTietHoaDon;
+    }
+
+    public void setChiTietHoaDon(List<Object> chiTietHoaDon) {
+        this.chiTietHoaDon = chiTietHoaDon;
+    }
+
 }

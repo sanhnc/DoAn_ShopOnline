@@ -1,0 +1,43 @@
+﻿@using WebAppDongHo.Models;
+@model List<HoaDon>
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+<h4><b><i class="fas fa-book"></i> Hóa Đơn</b></h4>
+<form action="@Url.Action("XLSuaHoaDon")" method="post" enctype="multipart/form-data">
+    <table class="table table-bordered">
+        <tr class="thead-light">
+            <th>Chi Tiết HD</th>
+            <th>Tình trạng đơn hàng</th>
+            <th>Mã HD</th>
+            <th>Người mua</th>
+            <th>Ngày đặt</th>
+            <th>Ngày giao</th>
+            <th>Thanh toán</th>
+            <th>Giao hàng</th>
+            <th>Trạng thái</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td><a href="@Url.Action("ChiTietHoaDon","Admin",new { mahd = item.MaHD })" class="btn btn-info">Xem chi tiết</a></td>
+        <td><a href="@Url.Action("ddd","Admin",new { mahd = item.MaHD })" class="btn btn-info">Tình trạng đơn hàng</a></td>
+        <td>@item.MaHD</td>
+        <td>@item.MaKH</td>
+        <td>@item.NgayLap</td>
+        <td>@item.NgayGiao</td>
+        <td>@item.MaKH</td>
+        <td>@item.DiaChiGiao</td>
+        <td>
+            @item.TrangThai
+        </td>
+    </tr>
+        }
+    </table>
+    <div class="offset-sm-5"><button type="submit" class="btn btn-dark" style="text-align:center"><i class="fas fa-user-plus"></i> Lưu</button></div>
+</form>
+    

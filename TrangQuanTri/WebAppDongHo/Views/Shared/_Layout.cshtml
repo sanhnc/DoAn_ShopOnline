@@ -1,0 +1,439 @@
+﻿@using WebAppDongHo.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Shop Online</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap/myStyle.css" rel="stylesheet" />
+    <link href="~/Content/css/all.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .navbar{
+            display:none;
+        }
+        .aaaaa {
+            display: none;
+        }
+
+    </style>
+    <link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-ui.js"></script>
+
+
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-sm sticky-top">
+        <ul class="navbar-nav">
+            
+            <li class="nav-item">
+                <a class="nav-link nav_ul_li_a" href="#">Blog <i class="fab fa-blogger"></i></a>
+            </li>
+
+            <li class="nav-item" style="line-height: 100px;display: block; margin-right:50px">
+                <a href="/"><img src="~/Content/hinhanh/logo.svg" /></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav_ul_li_a" href="">Giỏ hàng <i class="fas fa-shopping-cart"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+                @if (Session["Taikhoan"] == null)
+                {
+                    <a class="nav-link nav_ul_li_a" href="#">Tài khoản <i class="fas fa-user-circle"></i></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="@Url.Action("DangNhap","DangNhap")"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                        <li class="dropdown-item"><a href="@Url.Action("DangKy","DangNhap")"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
+                    </ul>
+                }
+                else
+                {
+                    var tk = (TaiKhoan)Session["TaiKhoan"];
+                    <a class="nav-link nav_ul_li_a" href="#">@tk.TenDN <i class="fas fa-user-circle"></i></a>
+                    <ul class="dropdown-menu">
+                        @if (tk.Quyen == true)
+                        {
+                            <li class="dropdown-item"><a href="@Url.Action("Index","Admin")"><i class="fas fa-tasks"></i>Quản Trị Website</a></li>
+                        }
+                        <li class="dropdown-item"><a href="@Url.Action("DangXuat","DangNhap")"><i class="fas fa-sign-in-alt"></i> Đăng Xuất</a></li>
+                    </ul>
+                }
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav_ul_li_a" href="#" onclick="return showmodal()">Tìm <i class="fas fa-search"></i></a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="modal" id="modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tìm kiếm: </h4>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <input type="text" name="q" id="q" class="form-control" />
+                    </form>
+                    <div id="rs">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showmodal() {
+            $(modal).modal('show');
+        }
+    </script>
+    <script>
+        $(q).autocomplete({
+            source: "/Home/search",
+            minLength: 1,
+            select: function (event, ui) {
+                $(rs).append('PlayerId: ' + ui.item.id);
+                $(rs).append(' Fullname: ' + ui.item.label);
+                $(rs).append(' Fullname: ' + ui.item.value);
+                //window.location = '/Abc/index/' + ui.item.id; //
+            }
+        });
+    </script>
+
+    <div>
+        @RenderBody()
+    
+    <div class="container aaaaa">
+
+        <h2 style="text-align: center; font-size: 20px">SHOP OUR INSTAGRAM</h2>
+
+        <h4 style="text-align: center; font-size: 16px">#curnonwatch</h4>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="row" style="height: 175px">
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_on_footer.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_on_footer2.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="row" style="height: 175px">
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_on_footer3.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_on_footer4.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <a href="#">
+                    <img src="~/Content/hinhanh/img_center_on_footer.jpg" style="width: 370px; height: 390px" alt="Alternate Text" />
+                </a>
+            </div>
+
+            <div class="col-4">
+                <div class="row" style="height: 175px">
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_right_footer.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_right_footer2.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="row aaaaa" style="height: 175px">
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_right_footer3.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#">
+                            <img src="~/Content/hinhanh/img_right_footer4.jpg" style="width: 180px; height: 190px" alt="Alternate Text" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+   
+
+    <footer>
+
+        <div class="container-fluid-1">
+            <div class="row">
+                <div class="col-3">
+                    <div class="grid-card">
+                        <div class="item-card">
+                            <i class="fas fa-money-check fa-3x mb-3" style="color:#fafafa;"></i>
+                            <p>THANH TOÁN DỄ DÀNG VÀ BẢO MẬT</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="grid-card">
+                        <div class="item-card">
+                            <i class="fas fa-truck fa-3x mb-3" style="color:#fafafa;"></i>
+                            <p>MIỄN PHÍ VẬN CHUYỂN VỚI ĐƠN HÀNG TỪ 700,000Đ</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="grid-card">
+                        <div class="item-card">
+                            <i class="fas fa-shield-alt fa-3x mb-3" style="color:#fafafa;"></i>
+                            <p>BẢO HÀNH 10 NĂM LỖI NHÀ SẢN XUẤT</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="grid-card">
+                        <div class="item-card">
+                            <i class="far fa-id-badge fa-3x mb-3" style="color:#fafafa;"></i>
+                            <p>CAM KẾT 100% HÀNG CHÍNH HÃNG</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*footer row two*@
+        @*
+
+        <div class="container-1">
+            <div class="row">
+                <div class="col-3" style="padding: 10px 10px 10px 10px">
+                    <div class="grid-card-2">
+                        <p>
+                            <img src="~/Content/hinhanh/footer.png" style="width: 100px;" />
+                        </p>
+
+                        <p><strong>Store </strong>: 33 Hàm Long, Hoàn Kiếm, Hà Nội.</p>
+
+                        <p>
+                            <strong>Store 2</strong>: 9 B7 Phạm Ngọc Thạch, Đống Đa, Hà Nội.
+                        </p>
+
+                        <p>
+                            <strong>Store 3</strong>: 25 Nguyễn Trãi, P.Bến Thành, Quận 1, TPHCM.
+                        </p>
+
+                        <p>
+                            <strong>Store 4</strong>: Lầu 2, 63 Hồ Tùng Mậu, Quận 1, TPHCM.
+                        </p>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="mailto:cskh@curnonwatch.com" title="mailtocskh@curnonwatch.com">
+                                    <p style="font-size: 15px">
+                                        <strong>cskh@curnonwatch.com</strong>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="tel:1900%20989913" title="tel:1900 0989913">
+                                    <p style="font-size: 20px">
+                                        <strong>1900 989913</strong>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="grid-card-2">
+
+                        <h6>MUA HÀNG</h6>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>ĐỒNG HỒ NAM</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>ĐỒNG HỒ NỮ</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>DÂY ĐỒNG HỒ</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>VÒNG TAY</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="grid-card-2">
+
+                        <h6>DỊCH VỤ KHÁCH HÀNG</h6>
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>TÀI KHOẢN</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>CHÍNH SÁCH VẬN CHUYỂN</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>CHÍNH SÁCH ĐỔI</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>CÂU HỎI THƯỜNG GẶP</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>CHÍNH SÁCH BẢO MẬT</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>CHÍNH SÁCH THANH TOÁN</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="grid-card-2">
+
+                        <h6>#CURNONWATCH</h6>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>BLOG</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="site-footer">
+                            <li class="site-footer-item">
+                                <a href="#">
+                                    <p>TUYỂN DỤNG</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="grid-card-2">
+
+                        <h6>SIGN UP FOR OUR NEWSLETTER</h6>
+
+                        <p>Đăng ký để cập nhật những thông tin và ưu đãi mới nhất từ Curnon.</p>
+                        <form class="form">
+                            <div class="form-field">
+                                <input type="text" class="form-input" style="width:100%;height:44px" name="FNAME" placeholder="Tên của bạn" />
+                            </div>
+                            <br />
+                            <div class="form-field">
+                                <input type="email" class="form-input" style="width:100%;height:44px" name="mail" placeholder="Địa chỉ Email" />
+                            </div>
+                            <br />
+                            <button class="btn btn-black" type="submit" style="background:#1c1c1c;color:#fff;width:100%;height:44px">Đăng ký</button>
+                            <p style="color:red">Please enter a value</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        *@
+        @*copyright*@
+        <div class="container">
+            <div class="copyright">
+                <p>
+                    <strong>© 2019 - Bản quyền của CTCP PHÁT TRIỂN SẢN PHẨM SÁNG TẠO VIỆT</strong>
+                    <br>
+                    "Giấy chứng nhận ĐKKD số 0108150321 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp ngày 29/01/2018 &nbsp;123C Thụy Khuê, Tây Hồ, Hà Nội"
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

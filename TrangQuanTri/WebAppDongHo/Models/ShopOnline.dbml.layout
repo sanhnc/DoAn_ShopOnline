@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ShopOnline">
+  <DataContextMoniker Name="/ShopOnlineDataContext" />
+  <nestedChildShapes>
+    <classShape Id="59d69ef0-27f1-4524-9460-1c69ed2d1d9e" absoluteBounds="6.25, 1.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ShopOnlineDataContext/ChiTietHoaDon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e57ac423-ec6c-47fa-9e3c-07df457c694d" absoluteBounds="6.265, 2.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="569ad7ed-4df4-4f1c-ae49-96f3e0a708f6" absoluteBounds="6.75, 4.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/ShopOnlineDataContext/TaiKhoan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5470dca2-463e-40d8-ba9c-df3de317bcb2" absoluteBounds="6.765, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bba4a540-830a-425f-8838-0493a59a5110" absoluteBounds="3.5, 5.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/ShopOnlineDataContext/HoaDon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fb2c7f46-9588-4165-979e-a5d686fe072b" absoluteBounds="3.515, 5.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99e7f810-1262-4c45-990a-aaf40d5eaaf3" absoluteBounds="0.75, 5.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/ShopOnlineDataContext/KhachHangOnline" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e8217ab1-d5ab-4b4e-af55-8324c2feff30" absoluteBounds="0.765, 5.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a95b0d6a-3c40-4f68-af0f-8590f4fc1005" absoluteBounds="0.75, 1.875, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/ShopOnlineDataContext/LoaiSP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8da3501d-e73a-45b8-8cee-9f612d65c03d" absoluteBounds="0.765, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da921304-68ca-4e3a-95ce-cc469a7077d7" absoluteBounds="3.5, 1, 2, 3.1170068359375009">
+      <DataClassMoniker Name="/ShopOnlineDataContext/SanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="530225be-f9c7-43d3-852b-480c6dd0d5a6" absoluteBounds="3.515, 1.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 6.83099609375); (6.46875 : 6.83099609375); (6.46875 : 3.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ShopOnlineDataContext/HoaDon/HoaDon_ChiTietHoaDon" />
+      <nodes>
+        <classShapeMoniker Id="bba4a540-830a-425f-8838-0493a59a5110" />
+        <classShapeMoniker Id="59d69ef0-27f1-4524-9460-1c69ed2d1d9e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.48159912109375); (3.5 : 6.48159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ShopOnlineDataContext/KhachHangOnline/KhachHangOnline_HoaDon" />
+      <nodes>
+        <classShapeMoniker Id="99e7f810-1262-4c45-990a-aaf40d5eaaf3" />
+        <classShapeMoniker Id="bba4a540-830a-425f-8838-0493a59a5110" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.53929768880208); (6.25 : 2.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ShopOnlineDataContext/SanPham/SanPham_ChiTietHoaDon" />
+      <nodes>
+        <classShapeMoniker Id="da921304-68ca-4e3a-95ce-cc469a7077d7" />
+        <classShapeMoniker Id="59d69ef0-27f1-4524-9460-1c69ed2d1d9e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.56814697265625); (3.5 : 2.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ShopOnlineDataContext/LoaiSP/LoaiSP_SanPham" />
+      <nodes>
+        <classShapeMoniker Id="a95b0d6a-3c40-4f68-af0f-8590f4fc1005" />
+        <classShapeMoniker Id="da921304-68ca-4e3a-95ce-cc469a7077d7" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

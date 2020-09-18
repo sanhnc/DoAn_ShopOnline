@@ -1,0 +1,80 @@
+﻿@model WebAppDongHo.Models.SanPham
+@{
+    ViewBag.Title = "SuaSanPham";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+
+<div class="container mt-5">
+    <h2 style="text-align: center">CHỈNH SỬA SẢN PHẨM</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <form>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Tên sản phẩm:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.TenSP, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Đơn vị tính:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.DonViTinh, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Số lượng:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.SoLuong, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Giá bán:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.GiaBan, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Giá vốn:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.GiaVon, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Giá nhập cuối:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.GiaNhapCuoi, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Mức tồn:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.MucTon, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Trạng thái:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.TrangThai, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-3"><h4>Hình ảnh:</h4></label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control" })
+                </div>
+            </div>
+           
+            <div class="row form-group">
+                <div class="offset-sm-5"><button type="submit" class="btn btn-dark"><i class="fas fa-user-plus"></i> Lưu</button></div>
+            </div>
+        </form>
+    }
+</div>
+
+
+

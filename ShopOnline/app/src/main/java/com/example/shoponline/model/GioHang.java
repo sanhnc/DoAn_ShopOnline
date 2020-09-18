@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class GioHang implements Serializable{
-    private int idsp;
+    private String idsp;
     private String tensp;
     private long giasp;
     private String hinhsp;
@@ -15,7 +15,7 @@ public class GioHang implements Serializable{
     public GioHang(){
 
     }
-    public int getIdsp() {
+    public String getIdsp() {
         return idsp;
     }
 
@@ -43,7 +43,7 @@ public class GioHang implements Serializable{
         this.giasp = giasp;
     }
 
-    public GioHang(int idsp, String tensp, long giasp, String hinhsp, int soluong) {
+    public GioHang(String idsp, String tensp, long giasp, String hinhsp, int soluong) {
 
         this.idsp = idsp;
         this.tensp = tensp;
